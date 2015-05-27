@@ -31,7 +31,7 @@ class Ingredient(models.Model):
 
 
 class RecipeIngredient(models.Model):
-    recipe = models.ForeignKey(Recipe, verbose_name='Recipe')
+    recipe = models.ForeignKey(Recipe, verbose_name='Recipe', related_name='items')
     ingredient = models.ForeignKey(Ingredient, verbose_name='Ingredient')
     amount = models.DecimalField(decimal_places=2, max_digits=6)
     unit = models.CharField(max_length=4, choices=UNITS)
@@ -45,17 +45,24 @@ class RecipeIngredient(models.Model):
         integer_portion = int(self.amount)
         decimal_portion = Decimal(round(self.amount - integer_portion, 2))
         fractional_portion = Fraction(decimal_portion)
-        unit = self.unit
-        if unit == "UNIT":
+        unit = " " + self.unit
+        if unit == " UNIT":
             unit = ""
-        elif integer_portion == 1 and not decimal_portion:
+        elif integer_portion > 1 or (integer_portion == 1 and decimal_portion):
             unit += "s"
         if decimal_portion and fractional_portion:
-            return "{0} {1}/{2} {3}".format(
-                integer_portion,
-                fractional_portion.numerator,
-                fractional_portion.denominator,
-                unit
-            )
+            if integer_portion:
+                return "{0} {1}/{2}{3}".format(
+                    integer_portion,
+                    fractional_portion.numerator,
+                    fractional_portion.denominator,
+                    unit
+                )
+            else:
+                return "{0}/{1}{2}".format(
+                    fractional_portion.numerator,
+                    fractional_portion.denominator,
+                    unit
+                )
         else:
-            return "{0} {1}".format(integer_portion, unit)
+            return "{0}{1}".format(integer_portion, unit)
