@@ -46,7 +46,7 @@ class RecipeIngredient(models.Model):
         decimal_portion = Decimal(round(self.amount - integer_portion, 2))
         fractional_portion = Fraction(decimal_portion)
         unit = " " + self.unit
-        if unit == " UNIT":
+        if unit == " unit":
             unit = ""
         elif integer_portion > 1 or (integer_portion == 1 and decimal_portion):
             unit += "s"

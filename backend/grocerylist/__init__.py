@@ -6,10 +6,10 @@ FRACTIONS = (
 )
 
 UNITS = (
-    ('UNIT', 'unit'),
-    ('TSP', 'tsp'),
-    ('TBSP', 'tbsp'),
-    ('CUP', 'cup'),
-    ('OZ', 'oz'),
-    ('LB', 'lb'),
+    ('unit', 'unit'),
+    ('tsp', 'tsp'),
+    ('tbsp', 'tbsp'),
+    ('cup', 'cup'),
+    ('oz', 'oz'),
+    ('lb', 'lb'),
 )

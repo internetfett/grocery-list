@@ -17,6 +17,9 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
+    url(r'^$', 'django.contrib.staticfiles.views.serve', kwargs={
+        'path': 'index.html'
+    }),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include('api.urls')),
 ]
