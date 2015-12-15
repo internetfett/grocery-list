@@ -57,12 +57,12 @@ class ChecklistItemSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ChecklistSerializer(serializers.HyperlinkedModelSerializer):
-    checklistingredient_set = ChecklistIngredientSerializer(many=True, read_only=True)
-    checklistitem_set = ChecklistItemSerializer(many=True, read_only=True)
+    checklist_ingredients = ChecklistIngredientSerializer(many=True, read_only=True, source='checklistingredient_set')
+    checklist_items = ChecklistItemSerializer(many=True, read_only=True, source='checklistitem_set')
 
     class Meta:
         model = Checklist
-        fields = ('id', 'name', 'checklistingredient_set', 'checklistitem_set')
+        fields = ('id', 'name', 'checklist_ingredients', 'checklist_items')
 
 
 class ExclusionSerializer(serializers.HyperlinkedModelSerializer):
