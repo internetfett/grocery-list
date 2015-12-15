@@ -1,0 +1,7 @@
+{{#if isEditing}}
+    {{edit class='edit' value=model.name focus-out=(action 'save' model) insert-newline=(action 'save' model)}}
+{{else}}
+    <input type='checkbox' checked={{model.status}} class='toggle' onchange={{action 'toggleStatus' model}}>
+    <label {{action 'edit' on='doubleClick'}}>{{model.name}}</label>
+    <button {{action 'remove' model}} class='destroy'>x</button>
+{{/if}}

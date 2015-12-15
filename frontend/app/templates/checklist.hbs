@@ -1,0 +1,12 @@
+<div class="breadcrumb">{{#link-to "checklists"}}&lt; back{{/link-to}}</div>
+
+<h2>{{model.name}}</h2>
+
+<ul>
+    {{#each model.checklist_ingredients as |ingredient|}}
+        {{checklist-ingredient model=ingredient}}
+    {{/each}}
+    {{#each model.checklist_items as |item|}}
+        {{checklist-item model=item}}
+    {{/each}}
+</ul>

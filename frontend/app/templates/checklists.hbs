@@ -1,0 +1,7 @@
+<div class="breadcrumb">{{#link-to "index"}}&lt; back{{/link-to}}</div>
+
+<h2>Checklists</h2>
+
+{{#each model as |checklist|}}
+  <h3>{{#link-to "checklist" checklist.id}}{{checklist.name}}{{/link-to}}</h3>
+{{/each}}
