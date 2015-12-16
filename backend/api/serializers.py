@@ -53,7 +53,7 @@ class ChecklistIngredientSerializer(serializers.HyperlinkedModelSerializer):
 class ChecklistItemSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ChecklistItem
-        fields = ('id', 'status', 'name', 'amount', 'unit')
+        fields = ('id', 'status', 'name', 'amount', 'unit', 'display_amount')
 
 
 class ChecklistSerializer(serializers.HyperlinkedModelSerializer):

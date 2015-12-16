@@ -2,6 +2,6 @@
     {{input type='text' class='edit' focus-out='save' value=model.name target=model}}
 {{else}}
     <input type='checkbox' checked={{model.status}} class='toggle' onchange={{action 'toggleStatus' model}}>
-    <label {{action 'edit' on='doubleClick'}}>{{model.name}}</label>
+    <label {{action 'edit' on='doubleClick'}}>{{model.display_amount}}{{#if isUnit}} {{model.unit}}{{/if}} {{model.name}}</label>
     <button {{action 'remove' model}} class='destroy'>x</button>
 {{/if}}

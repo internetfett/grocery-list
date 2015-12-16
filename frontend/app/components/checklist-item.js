@@ -28,5 +28,8 @@ export default Ember.Component.extend({
             model.toggleProperty('status');
             model.save();
         }
-    }
+    },
+    isUnit: function() {
+        return this.get('units') === 'unit';
+    }.property('units'),
 });

@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     tagName: 'li',
-    classNameBindings: ['checklist_ingredient.status:active', 'isEditing:editing'],
+    classNameBindings: ['model.status:active', 'isEditing:editing'],
 
     init() {
         this._super(...arguments);
@@ -14,19 +14,22 @@ export default Ember.Component.extend({
             this.set('isEditing', true);
         },
 
-        save(checklist_ingredient, title) {
+        save(model) {
             this.set('isEditing', false);
-            checklist_ingredient.set('name', name);
-            checklist_ingredient.save();
+            //model.set('name', name);
+            //model.save();
         },
 
-        remove(checklist_ingredient) {
-            checklist_ingredient.destroyRecord();
+        remove(model) {
+            model.destroyRecord();
         },
 
-        toggleStatus(checklist_ingredient) {
-            checklist_ingredient.toggleProperty('status');
-            checklist_ingredient.save();
+        toggleStatus(model) {
+            model.toggleProperty('status');
+            model.save();
         }
-    }
+    },
+    isUnit: function() {
+        return this.get('units') === 'unit';
+    }.property('units'),
 });
