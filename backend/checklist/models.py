@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 
 from grocerylist import UNITS
-from recipes.models import Ingredient
+from recipes.models import Category, Ingredient
 
 
 class Checklist(models.Model):
@@ -60,6 +60,7 @@ class ChecklistIngredient(ChecklistBaseItem):
 
 class ChecklistItem(ChecklistBaseItem):
     name = models.CharField(max_length=128)
+    category = models.ForeignKey(Category, verbose_name='Category', blank=True, null=True)
 
     def __unicode__(self):
         return self.name

@@ -24,7 +24,7 @@ class Recipe(models.Model):
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=128)
-    category = models.ForeignKey(Category, verbose_name='Category')
+    category = models.ForeignKey(Category, verbose_name='Category', blank=True, null=True)
 
     def __unicode__(self):
         return self.name
