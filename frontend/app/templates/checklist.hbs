@@ -3,10 +3,11 @@
 <h2>{{model.name}}</h2>
 
 <ul class="checklist">
-    {{#each model.checklist_ingredients as |ingredient|}}
-        {{checklist-ingredient model=ingredient}}
-    {{/each}}
-    {{#each sortedItems as |item|}}
-        {{checklist-item model=item}}
+    {{#each sortedList as |listItem|}}
+        {{#if listItem.ingredient}}
+            {{checklist-ingredient model=listItem}}
+        {{else}}
+            {{checklist-item model=listItem}}
+        {{/if}}
     {{/each}}
 </ul>

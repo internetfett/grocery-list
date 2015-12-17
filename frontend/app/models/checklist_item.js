@@ -6,4 +6,5 @@ export default DS.Model.extend({
     unit: DS.attr(),
     display_amount: DS.attr(),
     name: DS.attr(),
+    category: DS.attr(),
 });

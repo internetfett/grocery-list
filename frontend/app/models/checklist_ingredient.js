@@ -6,4 +6,11 @@ export default DS.Model.extend({
     unit: DS.attr(),
     display_amount: DS.attr(),
     ingredient: DS.attr(),
+
+    name: Ember.computed('ingredient', function() {
+        return this.get('ingredient.name');
+    }),
+    category: Ember.computed('ingredient', function() {
+        return this.get('ingredient.category');
+    }),
 });

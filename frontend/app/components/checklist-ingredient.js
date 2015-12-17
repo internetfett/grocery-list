@@ -14,7 +14,7 @@ export default Ember.Component.extend({
             this.set('isEditing', true);
         },
 
-        save(model) {
+        save(name) {
             this.set('isEditing', false);
             //model.set('name', name);
             //model.save();
