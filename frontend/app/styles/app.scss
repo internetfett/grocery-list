@@ -1,3 +1,11 @@
 @import "bourbon";
 @import "base/base";
 @import "neat";
+
+body {
+    @include outer-container;
+}
+
+.checklist {
+    @include span-columns(6);
+}

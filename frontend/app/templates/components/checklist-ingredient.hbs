@@ -1,7 +1,8 @@
 {{#if isEditing}}
     {{input type='text' class='edit' focus-out='save' value=model.ingredient.name}}
 {{else}}
-    <input type='checkbox' checked={{model.status}} class='toggle' onchange={{action 'toggleStatus' model}}>
-    <label {{action 'edit' on='doubleClick'}}>{{model.display_amount}}{{#if isUnit}} {{model.unit}}{{/if}} {{model.ingredient.name}}</label>
-    <button {{action 'remove' model}} class='destroy'>x</button>
+    <input type='checkbox' id='ingredient_{{model.id}}' checked={{model.status}} onchange={{action 'toggleStatus' model}}>
+    <label class='checkbox checkbox-green' for='ingredient_{{model.id}}'></label>
+    <span {{action 'edit' on='doubleClick'}}>{{model.ingredient.name}} ({{model.display_amount}}{{#if isUnit}} {{model.unit}}{{/if}})</span>
+    <button {{action 'remove' model}} class='destroy'>X</button>
 {{/if}}
