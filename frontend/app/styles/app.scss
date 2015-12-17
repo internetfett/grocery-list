@@ -2,8 +2,12 @@
 @import "base/base";
 @import "neat";
 
+@import "base/header";
+@import "base/checklist";
+
 body {
     @include outer-container;
+    margin-top: 0px;
 }
 
 .checklist {
