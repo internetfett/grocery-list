@@ -6,6 +6,7 @@ from grocerylist import UNITS
 
 class Category(models.Model):
     name = models.CharField(max_length=128)
+    user = models.ForeignKey(User, verbose_name='User')
 
     class Meta:
         verbose_name_plural = 'Categories'
@@ -25,6 +26,7 @@ class Recipe(models.Model):
 class Ingredient(models.Model):
     name = models.CharField(max_length=128)
     category = models.ForeignKey(Category, verbose_name='Category', blank=True, null=True)
+    user = models.ForeignKey(User, verbose_name='User')
 
     def __unicode__(self):
         return self.name
