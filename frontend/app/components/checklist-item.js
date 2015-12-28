@@ -20,13 +20,13 @@ export default Ember.Component.extend({
             this.model.save();
         },
 
-        remove(model) {
-            model.destroyRecord();
+        remove() {
+            this.model.destroyRecord();
         },
 
-        toggleStatus(model) {
-            model.toggleProperty('status');
-            model.save();
+        toggleStatus() {
+            this.model.toggleProperty('status');
+            this.model.save();
         }
     },
     isUnit: function() {

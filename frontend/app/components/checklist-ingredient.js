@@ -16,17 +16,18 @@ export default Ember.Component.extend({
 
         save(name) {
             this.set('isEditing', false);
-            //model.set('name', name);
-            //model.save();
+            var ingredient = this.model.get('ingredient');
+            ingredient.set('name', name);
+            ingredient.save();
         },
 
-        remove(model) {
-            model.destroyRecord();
+        remove() {
+            this.model.destroyRecord();
         },
 
-        toggleStatus(model) {
-            model.toggleProperty('status');
-            model.save();
+        toggleStatus() {
+            this.model.toggleProperty('status');
+            this.model.save();
         }
     },
     isUnit: function() {

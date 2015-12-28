@@ -5,7 +5,7 @@ export default DS.Model.extend({
     amount: DS.attr(),
     unit: DS.attr(),
     display_amount: DS.attr(),
-    ingredient: DS.attr(),
+    ingredient: DS.belongsTo('ingredient', {async: false}),
 
     name: Ember.computed('ingredient', function() {
         return this.get('ingredient.name');
