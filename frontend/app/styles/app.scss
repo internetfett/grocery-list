@@ -7,9 +7,14 @@
 
 body {
     @include outer-container;
+    margin-bottom: 0px;
     margin-top: 0px;
 }
 
 .checklist {
-    @include span-columns(6);
+    @include span-columns(12);
+    @include media($large-screen) {
+        @include span-columns(6);
+        @include shift(3);
+    }
 }

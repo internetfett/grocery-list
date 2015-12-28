@@ -25,8 +25,8 @@ html, body {
 .header {
   $base-spacing: 1em;
   $action-color: #477DCA;
-  $medium-screen: em(640);
-  $large-screen: em(860);
+  //$medium-screen: em(640);
+  //$large-screen: em(860);
   $header-background: desaturate(darken($action-color, 20%), 30%);
   $header-color: white;
   $header-link-color: transparentize($header-color, 0.6);

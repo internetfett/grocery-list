@@ -1,13 +1,24 @@
-<div class="breadcrumb">{{#link-to "checklists"}}&lt; back{{/link-to}}</div>
+<div class="header">
+    <ul>
+        <li>{{#link-to "checklists"}}&lt; back{{/link-to}}</li>
+        <li><a href="javascript:void(0)">{{model.name}}</a> ({{sortedList.length}} items)</li>
+    </ul>
+    <div class="header-secondary-links">
+        <ul>
+            <li><a href="javascript:void(0)">Edit</a></li>
+            <li><a href="javascript:void(0)">Add Item</a></li>
+        </ul>
+    </div>
+</div>
 
-<h2>{{model.name}}</h2>
-
-<ul class="checklist">
-    {{#each sortedList as |listItem|}}
-        {{#if listItem.ingredient}}
-            {{checklist-ingredient model=listItem}}
-        {{else}}
-            {{checklist-item model=listItem}}
-        {{/if}}
-    {{/each}}
-</ul>
+<div class="wrapper">
+    <ul class="checklist">
+        {{#each sortedList as |listItem|}}
+            {{#if listItem.ingredient}}
+                {{checklist-ingredient model=listItem}}
+            {{else}}
+                {{checklist-item model=listItem}}
+            {{/if}}
+        {{/each}}
+    </ul>
+</div>
