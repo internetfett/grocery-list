@@ -6,7 +6,7 @@
     <div class="header-secondary-links">
         <ul>
             <li><a href="javascript:void(0)">Edit</a></li>
-            <li><a href="javascript:void(0)">Add Item</a></li>
+            <li><a href="javascript:void(0)" {{action "toggleModal"}}>Add Item</a></li>
         </ul>
     </div>
 </div>
@@ -22,3 +22,11 @@
         {{/each}}
     </ul>
 </div>
+
+{{#if isShowingModal}}
+    {{#modal-dialog close="toggleModal" translucentOverlay=true}}
+        <h1>Stop! Modal Time!</h1>
+        <p>With Translucent Overlay</p>
+        <button {{action "toggleModal"}}>Close</button>
+    {{/modal-dialog}}
+{{/if}}
