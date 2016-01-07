@@ -1,7 +1,17 @@
-<div class="breadcrumb">{{#link-to "index"}}&lt; back{{/link-to}}</div>
+<div class="header">
+    <ul>
+        <li>{{#link-to "index"}}&lt; back{{/link-to}}</li>
+        <li><a href="javascript:void(0)">Checklists</a></li>
+    </ul>
+    <div class="header-secondary-links">
+        <ul>
+            <li><!--<a href="javascript:void(0)" {{action "toggleModal"}}>-->Add Checklist<!--</a>--></li>
+        </ul>
+    </div>
+</div>
 
-<h2>Checklists</h2>
-
-{{#each model as |checklist|}}
-  <h3>{{#link-to "checklist" checklist.id}}{{checklist.name}}{{/link-to}}</h3>
-{{/each}}
+<div class="wrapper">
+    {{#each model as |checklist|}}
+        <h3>{{#link-to "checklist" checklist.id}}{{checklist.name}}{{/link-to}}</h3>
+    {{/each}}
+</div>
