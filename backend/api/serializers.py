@@ -43,17 +43,20 @@ class RecipeSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ChecklistIngredientSerializer(serializers.HyperlinkedModelSerializer):
+    checklist = serializers.PrimaryKeyRelatedField(queryset=Checklist.objects.all())
     ingredient = IngredientSerializer(many=False, read_only=True)
 
     class Meta:
         model = ChecklistIngredient
-        fields = ('id', 'status', 'ingredient', 'amount', 'unit', 'display_amount')
+        fields = ('id', 'status', 'ingredient', 'amount', 'unit', 'display_amount', 'checklist')
 
 
 class ChecklistItemSerializer(serializers.HyperlinkedModelSerializer):
+    checklist = serializers.PrimaryKeyRelatedField(queryset=Checklist.objects.all())
+
     class Meta:
         model = ChecklistItem
-        fields = ('id', 'status', 'name', 'amount', 'unit', 'display_amount')
+        fields = ('id', 'status', 'name', 'amount', 'unit', 'display_amount', 'checklist')
 
 
 class ChecklistSerializer(serializers.HyperlinkedModelSerializer):
