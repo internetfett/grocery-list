@@ -7,9 +7,9 @@ export default Ember.Controller.extend({
     actions: {
         createItem: function() {
             var item = this.store.createRecord('checklist-item', {
-                'name': this.get('name'),
-                'unit': 'unit',//this.get('units'),
-                'amount': 1,//this.get('amount'),
+                'name': this.get('inputName'),
+                'unit': this.get('inputUnit'),
+                'amount': this.get('inputAmount'),
             });
             item.set('checklist', this.model);
             item.save().then(function(){}, function(){ alert('failure'); });
@@ -19,4 +19,22 @@ export default Ember.Controller.extend({
             this.toggleProperty('isShowingModal');
         }
     },
+    inputName: '', inputUnit: 'unit', inputAmount: .125,
+    units: ['unit', 'cup', 'oz', 'lb', 'tsp', 'tbsp'],
+    amounts: [
+        {label: '1/8', value: .125},
+        {label: '1/4', value: .25},
+        {label: '1/2', value: .5},
+        {label: '3/4', value: .75},
+        {label: '1', value: 1},
+        {label: '2', value: 2},
+        {label: '3', value: 3},
+        {label: '4', value: 4},
+        {label: '5', value: 5},
+        {label: '6', value: 6},
+        {label: '7', value: 7},
+        {label: '8', value: 8},
+        {label: '9', value: 9},
+        {label: '10', value: 10},
+    ],
 });

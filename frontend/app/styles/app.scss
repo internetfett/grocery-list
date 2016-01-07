@@ -21,3 +21,16 @@ body {
         @include shift(3);
     }
 }
+
+select {
+    margin-bottom: 1em;
+}
+
+select.inline {
+    display: inline-block !important;
+    margin-right: 1em;
+}
+
+button.close {
+    background: #f05f5c;
+}
