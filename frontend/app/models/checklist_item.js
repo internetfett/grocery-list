@@ -7,4 +7,5 @@ export default DS.Model.extend({
     display_amount: DS.attr(),
     name: DS.attr(),
     category: DS.attr(),
+    checklist: DS.belongsTo('checklist', {async: false}),
 });

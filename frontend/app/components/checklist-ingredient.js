@@ -30,6 +30,7 @@ export default Ember.Component.extend({
             this.model.save();
         }
     },
+
     isUnit: function() {
         return this.get('units') === 'unit';
     }.property('units'),
