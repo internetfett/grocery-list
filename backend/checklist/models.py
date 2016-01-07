@@ -16,7 +16,7 @@ class Checklist(models.Model):
 class ChecklistBaseItem(models.Model):
     checklist = models.ForeignKey(Checklist, verbose_name='Checklist')
     status = models.BooleanField(default=False, blank=True)
-    amount = models.DecimalField(decimal_places=2, max_digits=6, default=1)
+    amount = models.DecimalField(decimal_places=3, max_digits=6, default=1)
     unit = models.CharField(max_length=4, choices=UNITS)
 
     class Meta:
@@ -26,7 +26,7 @@ class ChecklistBaseItem(models.Model):
         from decimal import Decimal
         from fractions import Fraction
         integer_portion = int(self.amount)
-        decimal_portion = Decimal(round(self.amount - integer_portion, 2))
+        decimal_portion = Decimal(round(self.amount - integer_portion, 3))
         fractional_portion = Fraction(decimal_portion)
         unit = " " + self.unit
         if unit == " unit":
