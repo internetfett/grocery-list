@@ -4,5 +4,7 @@
     <input type='checkbox' id='ingredient_{{model.id}}' checked={{model.status}} onchange={{action 'toggleStatus'}}>
     <label class='checkbox checkbox-green' for='ingredient_{{model.id}}'></label>
     <span {{action 'edit' on='doubleClick'}}>{{model.ingredient.name}} ({{model.display_amount}}{{#if isUnit}} {{model.unit}}{{/if}})</span>
-    <button {{action 'remove'}} class='destroy'>X</button>
+    {{#if model.status}}
+        <button {{action 'remove'}} class='destroy'>X</button>
+    {{/if}}
 {{/if}}
