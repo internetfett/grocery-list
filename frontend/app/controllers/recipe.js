@@ -22,13 +22,13 @@ export default Ember.Controller.extend({
             this.toggleProperty('isShowingModal');
         }
     },
-    inputName: '', inputUnit: 'unit', inputAmount: .125,
+    inputName: '', inputUnit: 'unit', inputAmount: 0.125,
     units: ['unit', 'cup', 'oz', 'lb', 'tsp', 'tbsp'],
     amounts: [
-        {label: '1/8', value: .125},
-        {label: '1/4', value: .25},
-        {label: '1/2', value: .5},
-        {label: '3/4', value: .75},
+        {label: '1/8', value: 0.125},
+        {label: '1/4', value: 0.25},
+        {label: '1/2', value: 0.5},
+        {label: '3/4', value: 0.75},
         {label: '1', value: 1},
         {label: '2', value: 2},
         {label: '3', value: 3},
