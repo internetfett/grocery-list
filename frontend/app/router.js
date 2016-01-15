@@ -16,6 +16,8 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('checklists');
   this.route('checklist', { path: '/checklist/:id' });
+  this.route('recipes');
+  this.route('recipe', { path: '/recipe/:id' });
 });
 
 export default Router;

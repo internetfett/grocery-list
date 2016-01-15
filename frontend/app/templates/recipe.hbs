@@ -1,0 +1,34 @@
+<div class="header">
+    <ul>
+        <li>{{#link-to "recipes"}}&lt; back{{/link-to}}</li>
+        <li><a href="javascript:void(0)">{{model.name}}</a></li>
+    </ul>
+    <div class="header-secondary-links">
+        <ul>
+            <li><a href="javascript:void(0)">Edit</a></li>
+            <li><a href="javascript:void(0)" {{action "toggleModal"}}>Add Ingredient</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="wrapper">
+    <ul class="checklist">
+        {{#each model.recipe_ingredients as |recipe_ingredient|}}
+            {{#if recipe_ingredient.ingredient}}
+                {{recipe-ingredient model=recipe_ingredient}}
+            {{else}}
+                {{recipe-ingredient model=recipe_ingredient}}
+            {{/if}}
+        {{/each}}
+    </ul>
+</div>
+
+{{#if isShowingModal}}
+    {{#modal-dialog close="toggleModal" translucentOverlay=true}}
+        {{view "select" content=amounts optionValuePath="content.value" optionLabelPath="content.label" class="inline" value=inputAmount}}
+        {{view "select" content=units class="inline" value=inputUnit}}
+        {{input type="text" placeholder="Name" value=inputName}}
+        <button {{action "toggleModal"}} class="close">Close</button>
+        <button {{action "createItem"}}>Create</button>
+    {{/modal-dialog}}
+{{/if}}

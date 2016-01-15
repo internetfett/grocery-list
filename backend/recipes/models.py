@@ -33,7 +33,7 @@ class Ingredient(models.Model):
 
 
 class RecipeIngredient(models.Model):
-    recipe = models.ForeignKey(Recipe, verbose_name='Recipe', related_name='items')
+    recipe = models.ForeignKey(Recipe, verbose_name='Recipe')
     ingredient = models.ForeignKey(Ingredient, verbose_name='Ingredient')
     amount = models.DecimalField(decimal_places=3, max_digits=6)
     unit = models.CharField(max_length=4, choices=UNITS)

@@ -9,7 +9,7 @@ from api.views import ChecklistViewSet, ChecklistIngredientViewSet, ChecklistIte
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'recipes', RecipeViewSet)
-router.register(r'recipe_items', RecipeIngredientViewSet)
+router.register(r'recipe-ingredients', RecipeIngredientViewSet)
 router.register(r'ingredients', IngredientViewSet)
 router.register(r'categories', CategoryViewSet)
 router.register(r'checklists', ChecklistViewSet)

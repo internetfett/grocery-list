@@ -1,0 +1,7 @@
+{{#if isEditing}}
+    {{input type='text' class='edit' focus-out='save' value=model.ingredient.name}}
+{{else}}
+    <label class='checkbox'></label>
+    <span {{action 'edit' on='doubleClick'}}>{{model.ingredient.name}} ({{model.display_amount}}{{#if isUnit}} {{model.unit}}{{/if}})</span>
+    <button {{action 'remove'}} class='destroy'>X</button>
+{{/if}}

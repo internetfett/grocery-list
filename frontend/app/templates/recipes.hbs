@@ -1,0 +1,17 @@
+<div class="header">
+    <ul>
+        <li>{{#link-to "index"}}&lt; back{{/link-to}}</li>
+        <li><a href="javascript:void(0)">Recipes</a></li>
+    </ul>
+    <div class="header-secondary-links">
+        <ul>
+            <li><!--<a href="javascript:void(0)" {{action "toggleModal"}}>-->Add Recipe<!--</a>--></li>
+        </ul>
+    </div>
+</div>
+
+<div class="wrapper">
+    {{#each model as |recipe|}}
+        <h3>{{#link-to "recipe" recipe.id}}{{recipe.name}}{{/link-to}}</h3>
+    {{/each}}
+</div>

@@ -4,6 +4,7 @@ export default DS.Model.extend({
     name: DS.attr(),
     checklist_ingredients: DS.hasMany('checklist_ingredient', {async: false}),
     checklist_items: DS.hasMany('checklist_item', {async: false}),
+    user: DS.attr(),
 
     combined: function() {
         var ingredients = this.get('checklist_ingredients');

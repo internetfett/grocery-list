@@ -20,26 +20,35 @@ class CategorySerializer(serializers.HyperlinkedModelSerializer):
 
 class IngredientSerializer(serializers.HyperlinkedModelSerializer):
     category = CategorySerializer(many=False, read_only=True)
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
 
     class Meta:
         model = Ingredient
-        fields = ('id', 'name', 'category')
+        fields = ('id', 'name', 'category', 'user')
 
 
 class RecipeIngredientSerializer(serializers.HyperlinkedModelSerializer):
-    ingredient = IngredientSerializer(many=False, read_only=True)
+    recipe = serializers.PrimaryKeyRelatedField(queryset=Recipe.objects.all())
+    ingredient = IngredientSerializer(many=False, read_only=False)
 
     class Meta:
         model = RecipeIngredient
-        fields = ('id', 'ingredient', 'amount', 'unit', 'display_amount')
+        fields = ('id', 'recipe', 'ingredient', 'amount', 'unit', 'display_amount')
+
+    def create(self, validated_data):
+        ingredient = Ingredient.objects.create(**validated_data['ingredient'])
+        ingredient.save()
+        validated_data['ingredient'] = ingredient
+        return RecipeIngredient.objects.create(**validated_data)
 
 
 class RecipeSerializer(serializers.HyperlinkedModelSerializer):
-    items = RecipeIngredientSerializer(many=True, read_only=True)
+    recipe_ingredients = RecipeIngredientSerializer(many=True, read_only=True, source='recipeingredient_set')
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
 
     class Meta:
         model = Recipe
-        fields = ('id', 'name', 'items')
+        fields = ('id', 'name', 'recipe_ingredients', 'user')
 
 
 class ChecklistIngredientSerializer(serializers.HyperlinkedModelSerializer):
@@ -62,10 +71,11 @@ class ChecklistItemSerializer(serializers.HyperlinkedModelSerializer):
 class ChecklistSerializer(serializers.HyperlinkedModelSerializer):
     checklist_ingredients = ChecklistIngredientSerializer(many=True, read_only=True, source='checklistingredient_set')
     checklist_items = ChecklistItemSerializer(many=True, read_only=True, source='checklistitem_set')
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
 
     class Meta:
         model = Checklist
-        fields = ('id', 'name', 'checklist_ingredients', 'checklist_items')
+        fields = ('id', 'name', 'checklist_ingredients', 'checklist_items', 'user')
 
 
 class ExclusionSerializer(serializers.HyperlinkedModelSerializer):
