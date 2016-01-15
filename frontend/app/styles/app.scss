@@ -14,12 +14,21 @@ body {
     margin-top: 0px;
 }
 
-.checklist {
+.checklist, .controls {
     @include span-columns(12);
     @include media($large-screen) {
         @include span-columns(6);
         @include shift(3);
     }
+}
+
+.checklist {
+    @include omega();
+}
+
+.controls {
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 select {
@@ -33,4 +42,8 @@ select.inline {
 
 button.close {
     background: #f05f5c;
+}
+
+.text-center {
+    text-align: center;
 }

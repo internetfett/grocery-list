@@ -11,9 +11,14 @@
 </div>
 
 <div class="wrapper">
-    {{#each model as |recipe|}}
-        <h3>{{#link-to "recipe" recipe.id}}{{recipe.name}}{{/link-to}}</h3>
-    {{/each}}
+    <ul class="checklist">
+        {{#each model as |recipe|}}
+            {{recipe-item model=recipe}}
+        {{/each}}
+    </ul>
+    <div class="controls text-center">
+        <button {{action "generateList" }}>Generate Grocery List</button>
+    </div>
 </div>
 
 {{#if isShowingModal}}

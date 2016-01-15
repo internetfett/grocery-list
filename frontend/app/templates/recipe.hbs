@@ -16,8 +16,6 @@
         {{#each model.recipe_ingredients as |recipe_ingredient|}}
             {{#if recipe_ingredient.ingredient}}
                 {{recipe-ingredient model=recipe_ingredient}}
-            {{else}}
-                {{recipe-ingredient model=recipe_ingredient}}
             {{/if}}
         {{/each}}
     </ul>

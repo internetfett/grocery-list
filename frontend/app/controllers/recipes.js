@@ -3,6 +3,9 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
     isShowingModal: false,
     actions: {
+        generateList: function () {
+            // Here we will instantiate a fake model and jam stuff into it
+        },
         createRecipe: function() {
             var existing = this.model.get('firstObject');
             var recipe = this.store.createRecord('recipe', {
