@@ -5,7 +5,7 @@
     </ul>
     <div class="header-secondary-links">
         <ul>
-            <li><!--<a href="javascript:void(0)" {{action "toggleModal"}}>-->Add Recipe<!--</a>--></li>
+            <li><a href="javascript:void(0)" {{action "toggleModal"}}>Add Recipe</a></li>
         </ul>
     </div>
 </div>
@@ -15,3 +15,11 @@
         <h3>{{#link-to "recipe" recipe.id}}{{recipe.name}}{{/link-to}}</h3>
     {{/each}}
 </div>
+
+{{#if isShowingModal}}
+    {{#modal-dialog close="toggleModal" translucentOverlay=true}}
+        {{input type="text" placeholder="Name" value=inputName}}
+        <button {{action "toggleModal"}} class="close">Close</button>
+        <button {{action "createRecipe"}}>Create</button>
+    {{/modal-dialog}}
+{{/if}}
