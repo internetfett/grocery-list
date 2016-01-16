@@ -93,3 +93,9 @@ class RepeatableSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Repeatable
         fields = ('id', 'ingredient', 'item')
+
+
+class RecipeListSerializer(serializers.Serializer):
+    recipes = serializers.ListField(
+        child = serializers.IntegerField()
+    )

@@ -1,9 +1,11 @@
 from django.contrib.auth.models import User
 
-from rest_framework import viewsets
+from rest_framework import status, viewsets
+from rest_framework.decorators import detail_route
+from rest_framework.response import Response
 
 from api.serializers import UserSerializer, RecipeSerializer, RecipeIngredientSerializer, IngredientSerializer, CategorySerializer
-from api.serializers import ChecklistIngredientSerializer, ChecklistItemSerializer, ChecklistSerializer, ExclusionSerializer, RepeatableSerializer
+from api.serializers import ChecklistIngredientSerializer, ChecklistItemSerializer, ChecklistSerializer, ExclusionSerializer, RepeatableSerializer, RecipeListSerializer
 from checklist.models import Checklist, ChecklistIngredient, ChecklistItem, Exclusion, Repeatable
 from recipes.models import Recipe, RecipeIngredient, Ingredient, Category
 
@@ -62,6 +64,16 @@ class ChecklistViewSet(viewsets.ModelViewSet):
     """
     queryset = Checklist.objects.all()
     serializer_class = ChecklistSerializer
+
+    @detail_route(methods=['POST'])
+    def recipes(self, request, pk=None):
+        checklist = self.get_object()
+        serializer = RecipeListSerializer(data=request.data)
+        if serializer.is_valid():
+            checklist.add_recipes(serializer.data['recipes'])
+            return Response({'status': 'success'})
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class ChecklistIngredientViewSet(viewsets.ModelViewSet):

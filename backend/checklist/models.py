@@ -12,6 +12,29 @@ class Checklist(models.Model):
     def __unicode__(self):
         return self.name
 
+    def add_recipes(self, recipes):
+        from django.db.models import Sum
+        from checklist.models import Checklist, ChecklistIngredient, Exclusion, Repeatable
+        from recipes.models import RecipeIngredient
+        exclusions = Exclusion.objects.values_list('ingredient', flat=True)
+        recipe_ingredients = RecipeIngredient.objects.filter(recipe__in=recipes) \
+            .values('ingredient', 'unit').annotate(amount=Sum('amount'))
+        for recipe_ingredient in recipe_ingredients:
+            if recipe_ingredient['ingredient'] not in exclusions:
+                checklist_ingredient = ChecklistIngredient.objects.create(
+                    checklist = Checklist.objects.get(id=self.id),
+                    amount = recipe_ingredient['amount'],
+                    unit = recipe_ingredient['unit'],
+                    ingredient = Ingredient.objects.get(id=recipe_ingredient['ingredient'])
+                )
+        """for repeatable in Repeatable.objects.all():
+            if repeatable.ingredient:
+                repeatable.ingredient.status = False
+                repeatable.ingredient.save()
+            if repeatable.item:
+                repeatable.item.status = False
+                repeatable.item.save()"""
+
 
 class ChecklistBaseItem(models.Model):
     checklist = models.ForeignKey(Checklist, verbose_name='Checklist')
