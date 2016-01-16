@@ -3,6 +3,6 @@
 {{else}}
     <input type='checkbox' id='item_{{model.id}}' checked={{model.status}} onchange={{action 'toggleStatus'}}>
     <label class='checkbox checkbox-green' for='item_{{model.id}}'></label>
-    <span {{action 'edit' on='doubleClick'}}>{{#link-to "recipe" model.id}}{{model.name}}{{/link-to}}</span>
+    <span {{action 'edit' on='doubleClick'}}>{{#link-to "recipe" model.id}}{{model.name}}{{/link-to}} x</span>
     <button {{action 'remove'}} class='destroy'>X</button>
 {{/if}}

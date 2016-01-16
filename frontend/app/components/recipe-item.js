@@ -2,11 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     tagName: 'li',
-    classNameBindings: ['status:active', 'isEditing:editing'],
+    classNameBindings: ['model.status:active', 'isEditing:editing'],
 
     init() {
         this._super(...arguments);
-        this.set('status', false);
+        this.model.set('status', false);
         this.set('isEditing', false);
     },
 
@@ -26,7 +26,7 @@ export default Ember.Component.extend({
         },
 
         toggleStatus() {
-            this.toggleProperty('status');
+            this.model.toggleProperty('status');
         }
     },
 });

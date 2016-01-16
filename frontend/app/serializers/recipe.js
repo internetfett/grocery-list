@@ -5,5 +5,6 @@ export default DRFSerializer.extend(DS.EmbeddedRecordsMixin, {
     attrs: {
         recipe_ingredients: { embedded: 'always' },
         user: { embedded: 'always' },
+        //status: { readOnly: true },
     }
 });

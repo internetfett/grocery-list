@@ -4,7 +4,13 @@ export default Ember.Controller.extend({
     isShowingModal: false,
     actions: {
         generateList: function () {
-            // Here we will instantiate a fake model and jam stuff into it
+            var existing = this.model.get('firstObject');
+            var checklist_generator = this.store.createRecord('checklist_generator', {
+                'recipes': this.get('recipes'),
+                'user': existing.get('user'),
+            });
+            //checklist_generator.set('recipes', this.get('recipes'));
+            checklist_generator.save();
         },
         createRecipe: function() {
             var existing = this.model.get('firstObject');
@@ -19,5 +25,10 @@ export default Ember.Controller.extend({
             this.toggleProperty('isShowingModal');
         }
     },
+    selectedRecipes: function() {
+        var recipes = this.get('model').filterBy('status', true);
+        recipes = recipes.mapBy('id');
+        this.set('recipes', recipes);
+    }.observes('model.@each.status'),
     inputName: '',
 });
