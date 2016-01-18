@@ -11,6 +11,7 @@ class RecipeIngredientInline(admin.TabularInline):
 class CategoryAdmin(admin.ModelAdmin):
 	list_display = ('name',)
 	search_fields = ['name']
+	ordering = ('name',)
 
 
 class RecipeAdmin(admin.ModelAdmin):
@@ -47,6 +48,7 @@ class RecipeAdmin(admin.ModelAdmin):
 class IngredientAdmin(admin.ModelAdmin):
     list_display = ('name', 'category')
     search_fields = ['name']
+    ordering = ('name',)
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Recipe, RecipeAdmin)
