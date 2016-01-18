@@ -12,7 +12,7 @@
 
 <div class="wrapper">
     <ul class="checklist">
-        {{#each model as |recipe|}}
+        {{#each sortedList as |recipe|}}
             {{recipe-item model=recipe}}
         {{/each}}
     </ul>

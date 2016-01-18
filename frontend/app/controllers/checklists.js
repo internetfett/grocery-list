@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+    sortProperties: ['name:asc'],
+    sortedList: Ember.computed.sort('model', 'sortProperties'),
     isShowingModal: false,
     actions: {
         createChecklist: function() {

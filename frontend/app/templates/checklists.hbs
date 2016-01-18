@@ -11,7 +11,7 @@
 </div>
 
 <div class="wrapper">
-    {{#each model as |checklist|}}
+    {{#each sortedList as |checklist|}}
         <h3>{{#link-to "checklist" checklist.id}}{{checklist.name}}{{/link-to}}</h3>
     {{/each}}
 </div>
