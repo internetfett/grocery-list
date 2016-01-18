@@ -25,8 +25,8 @@ html, body {
   //$large-screen: em(860);
   $header-background: desaturate(darken($action-color, 20%), 30%);
   $header-color: white;
-  $header-link-color: transparentize($header-color, 0.6);
-  $header-disclaimer-color: transparentize($header-color, 0.6);
+  $header-link-color: transparentize($header-color, 0.2);
+  $header-text-color: transparentize($header-color, 0.4);
 
   background: $header-background;
   padding: $base-spacing;
@@ -41,6 +41,7 @@ html, body {
   }
 
   ul li {
+    color: $header-text-color;
     list-style: none;
     padding-right: 1em;
     display: inline;
