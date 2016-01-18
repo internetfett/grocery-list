@@ -41,7 +41,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.baseURL = '/grocerylist/';
+    ENV.APP.API_HOST = 'http://internetfett.pythonanywhere.com';
   }
 
   return ENV;
