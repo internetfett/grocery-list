@@ -14,7 +14,7 @@ body {
     margin-top: 0px;
 }
 
-.checklist, .controls {
+.checklist, .generic_list, .controls {
     @include span-columns(12);
     @include media($large-screen) {
         @include span-columns(6);

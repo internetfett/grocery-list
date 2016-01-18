@@ -15,11 +15,7 @@ html, body {
 }
 
 .header, .wrapper:after {
-  height: 17em;
-
-  @include media($large-screen) {
-    height: 4em;
-  }
+  height: 4em;
 }
 
 .header {
@@ -38,26 +34,17 @@ html, body {
   display: inline-block;
 
   ul {
-    line-height: 1.5em;
-    margin: 0 0 1em 0;
+    line-height: 1.8em;
+    margin: 0 0 0 1em;
     padding: 0;
-    
-    @include media($large-screen) {
-      float: left;
-      line-height: 1.8em;
-      margin-left: 1em;
-      margin-bottom: 0;
-    }
+    float: left;
   }
 
   ul li {
     list-style: none;
     padding-right: 1em;
-
-    @include media($large-screen) {
-      display: inline;
-      text-align: left;
-    }
+    display: inline;
+    text-align: left;
   }
 
   ul li a {
@@ -71,44 +58,10 @@ html, body {
   }
 
   .header-secondary-links {
-    @include media($large-screen) {
-      float: right;
-    }
+    float: right;
 
     li {
       font-size: 0.8em;
-    }
-
-    ul.header-social {
-      margin: 1em 0 0 0;
-
-      @include media($large-screen) {
-        float: right;
-        margin-top: 0;
-      }
-
-      li {
-        font-size: 1em;
-        float: left;
-        line-height: 0;
-        margin: 0;
-        padding-right: 0.7em;
-
-        &:last-child {
-          padding-right: 0;
-        }
-      }
-
-      img {
-        height: 1.6em;
-        opacity: 0.7;
-        padding: 1px;
-
-        &:focus,
-        &:hover {
-          opacity: 1;
-        }
-      }
     }
   }
 }
