@@ -140,6 +140,6 @@ STATICFILES_DIRS = (
 STATIC_URL = '/static/'
 
 try:
-    from local_settings.py import *
+    from settings_local import *
 except ImportError:
     pass
