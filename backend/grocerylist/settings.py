@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # 3rd party
     'corsheaders',
+    'oauth2_provider',
     'rest_framework',
     # App
     'api',
@@ -90,6 +91,19 @@ CORS_ALLOW_HEADERS = (
   'accept-encoding',
 )
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
+OAUTH2_PROVIDER = {
+    'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'groups': 'Access to your groups'}
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -120,7 +134,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "../frontend"),
+    #os.path.join(BASE_DIR, "../frontend"),
 )
 
 STATIC_URL = '/static/'
+
+try:
+    from local_settings.py import *
+except ImportError:
+    pass

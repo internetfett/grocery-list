@@ -1,8 +1,10 @@
 from django.contrib.auth.models import User
 
-from rest_framework import status, viewsets
+from rest_framework import permissions, status, viewsets
 from rest_framework.decorators import detail_route
 from rest_framework.response import Response
+
+from oauth2_provider.ext.rest_framework import TokenHasReadWriteScope, TokenHasScope
 
 from api.serializers import UserSerializer, RecipeSerializer, RecipeIngredientSerializer, IngredientSerializer, CategorySerializer
 from api.serializers import ChecklistIngredientSerializer, ChecklistItemSerializer, ChecklistSerializer, ExclusionSerializer, RepeatableSerializer, RecipeListSerializer
@@ -16,6 +18,7 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated, TokenHasReadWriteScope]
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
