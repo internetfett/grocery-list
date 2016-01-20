@@ -18,6 +18,7 @@ Router.map(function() {
   this.route('checklist', { path: '/checklist/:id' });
   this.route('recipes');
   this.route('recipe', { path: '/recipe/:id' });
+  this.route('login');
 });
 
 export default Router;

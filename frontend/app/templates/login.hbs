@@ -1,0 +1,23 @@
+<div class="header">
+    <ul>
+        <li><a href="javascript:void(0)">Login</a></li>
+    </ul>
+    <div class="header-secondary-links">
+        <ul>
+            <!--<li></li>-->
+        </ul>
+    </div>
+</div>
+
+<div class="wrapper">
+    <form {{action 'authenticate' on='submit'}}>
+        <label for="identification">Username</label>
+        {{input id='identification' placeholder='Enter Username' value=identification}}
+        <label for="password">Password</label>
+        {{input id='password' placeholder='Enter Password' type='password' value=password}}
+        <button type="submit">Login</button>
+        {{#if errorMessage}}
+        <p>{{errorMessage}}</p>
+        {{/if}}
+    </form>
+</div>

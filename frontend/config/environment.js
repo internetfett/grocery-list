@@ -26,6 +26,8 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.APP.API_HOST = 'http://localhost:8000';
+    ENV.APP.CLIENT_ID = '8RIA7ouqSum8JFwA3cLi0ZTbjPPdhxImRzFk4GyM';
+    ENV.APP.CLIENT_SECRET = 'nEUTb7AI49QTEngrnCT5HtEkTY4sPYbKrN0OJzXHvEYyPj6eec8SRKGVTlKtELyZT5h0LPKOWhuIUt480umtr8UfWTdTbLtl6nJAy6QwYOmMQF5x36VdktiSBiF3lUqe';
   }
 
   if (environment === 'test') {
@@ -43,6 +45,8 @@ module.exports = function(environment) {
   if (environment === 'production') {
     ENV.baseURL = '/grocerylist/';
     ENV.APP.API_HOST = 'http://internetfett.pythonanywhere.com';
+    ENV.APP.CLIENT_ID = '8RIA7ouqSum8JFwA3cLi0ZTbjPPdhxImRzFk4GyM';
+    ENV.APP.CLIENT_SECRET = 'nEUTb7AI49QTEngrnCT5HtEkTY4sPYbKrN0OJzXHvEYyPj6eec8SRKGVTlKtELyZT5h0LPKOWhuIUt480umtr8UfWTdTbLtl6nJAy6QwYOmMQF5x36VdktiSBiF3lUqe';
   }
 
   return ENV;
