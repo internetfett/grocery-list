@@ -7,8 +7,7 @@ class IsOwnerOrListing(permissions.BasePermission):
     """
 
     def has_permission(self, request, view):
-        if request.method in permissions.SAFE_METHODS:
-            return True
+        return True
 
     def has_object_permission(self, request, view, obj):
         return obj.user == request.user
@@ -20,8 +19,7 @@ class IsRelatedOwnerOrListing(permissions.BasePermission):
     """
 
     def has_permission(self, request, view):
-        if request.method in permissions.SAFE_METHODS:
-            return True
+        return True
 
     def has_object_permission(self, request, view, obj):
         related_obj = getattr(obj, view.owner_related_field)
