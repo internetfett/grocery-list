@@ -45,8 +45,8 @@ module.exports = function(environment) {
   if (environment === 'production') {
     ENV.baseURL = '/grocerylist/';
     ENV.APP.API_HOST = 'http://internetfett.pythonanywhere.com';
-    ENV.APP.CLIENT_ID = '8RIA7ouqSum8JFwA3cLi0ZTbjPPdhxImRzFk4GyM';
-    ENV.APP.CLIENT_SECRET = 'nEUTb7AI49QTEngrnCT5HtEkTY4sPYbKrN0OJzXHvEYyPj6eec8SRKGVTlKtELyZT5h0LPKOWhuIUt480umtr8UfWTdTbLtl6nJAy6QwYOmMQF5x36VdktiSBiF3lUqe';
+    ENV.APP.CLIENT_ID = 'fytW0vpFBiH862Gcn3bY227NKhHPxanR6qUajttt';
+    ENV.APP.CLIENT_SECRET = 'GdE3w1XTnO71tzYGKTcC4Ne5KyPuXC9dFiAwYjTmpg7y0ZroAI6mK4ie3rYXkKrqPeCBFVRdm7CVIJ6CjRVRZQrsrgmgXEo8M5qypkopCFBS00jTlsNoocAkMaspeG42';
   }
 
   return ENV;
