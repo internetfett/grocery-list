@@ -6,7 +6,7 @@ export default OAuth2PasswordGrant.extend({
     serverTokenRevocationEndpoint: ENV.APP.API_HOST + '/o/revoke_token/',
     makeRequest: function(url, data) {
         data.client_id = ENV.APP.CLIENT_ID;
-        data.client_secret = 'nEUTb7AI49QTEngrnCT5HtEkTY4sPYbKrN0OJzXHvEYyPj6eec8SRKGVTlKtELyZT5h0LPKOWhuIUt480umtr8UfWTdTbLtl6nJAy6QwYOmMQF5x36VdktiSBiF3lUqe';
+        data.client_secret = ENV.APP.CLIENT_SECRET;
         return this._super(url, data);
     }
 });
