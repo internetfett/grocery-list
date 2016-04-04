@@ -18,9 +18,18 @@ class Category(models.Model):
 class Recipe(models.Model):
     name = models.CharField(max_length=128)
     user = models.ForeignKey(User, verbose_name='User')
+    servings = models.IntegerField(default=0, blank=True)
 
     def __unicode__(self):
         return self.name
+
+    def calories_per_serving(self):
+        if self.servings:
+            total_calories = 0
+            for ingredient in self.recipeingredient_set.all():
+                total_calories += ingredient.calories
+            return total_calories / self.servings
+        return 0
 
 
 class Ingredient(models.Model):
@@ -37,6 +46,7 @@ class RecipeIngredient(models.Model):
     ingredient = models.ForeignKey(Ingredient, verbose_name='Ingredient')
     amount = models.DecimalField(decimal_places=3, max_digits=6)
     unit = models.CharField(max_length=4, choices=UNITS)
+    calories = models.IntegerField(default=0, blank=True)
 
     def __unicode__(self):
         return "{0} {1}".format(self.display_amount(), self.ingredient.name)

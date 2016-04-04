@@ -15,7 +15,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class RecipeAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('name','calories_per_serving')
     search_fields = ['name']
     inlines = [RecipeIngredientInline]
     actions = ['generate_checklist']
