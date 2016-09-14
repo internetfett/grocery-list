@@ -3,6 +3,7 @@ import config from './config/environment';
 
 const Router = Ember.Router.extend({
   location: config.locationType,
+  rootURL: config.rootURL,
   setTitle: function(title) {
     var renderer = this.container.lookup('renderer:-dom');
     if(renderer) {

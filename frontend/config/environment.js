@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'frontend',
     environment: environment,
-    baseURL: '/',
+    rootURL: '/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
@@ -32,7 +32,7 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.baseURL = '/';
+    ENV.rootURL = '/';
     ENV.locationType = 'none';
 
     // keep test console output quieter
@@ -43,7 +43,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.baseURL = '/grocerylist/';
+    ENV.rootURL = '/grocerylist/';
     ENV.APP.API_HOST = 'http://internetfett.pythonanywhere.com';
     ENV.APP.CLIENT_ID = 'fytW0vpFBiH862Gcn3bY227NKhHPxanR6qUajttt';
     ENV.APP.CLIENT_SECRET = 'GdE3w1XTnO71tzYGKTcC4Ne5KyPuXC9dFiAwYjTmpg7y0ZroAI6mK4ie3rYXkKrqPeCBFVRdm7CVIJ6CjRVRZQrsrgmgXEo8M5qypkopCFBS00jTlsNoocAkMaspeG42';
